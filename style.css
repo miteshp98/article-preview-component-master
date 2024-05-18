@@ -1,0 +1,252 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --VeryDarkGrayishBlue: hsl(217, 19%, 35%);
+  --DesaturatedDarkBlue: hsl(214, 17%, 51%);
+  --GrayishBlue: hsl(212, 23%, 69%);
+  --LightGrayishBlue: hsl(210, 46%, 95%);
+}
+
+body {
+  background-color: var(--LightGrayishBlue);
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  overflow: hidden;
+}
+
+.article-component {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.wrapper {
+  display: flex;
+  background-color: white;
+  width: 900px;
+  height: 330px;
+  border-radius: 15px;
+}
+
+.img-wrap > img {
+  width: 370px;
+  height: 330px;
+  object-fit: cover;
+  object-position: left;
+  border-radius: 15px 0 0 15px;
+}
+
+.detail-wrap {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+h1 {
+  color: var(--VeryDarkGrayishBlue);
+  padding-right: 40px;
+  font-size: 1.6em;
+}
+
+.description {
+  color: var(--DesaturatedDarkBlue);
+  font-weight: 500;
+  padding-right: 10px;
+  line-height: 25px;
+  flex-grow: 1;
+}
+
+.bottom-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-wrap {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-wrap > img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.name {
+  font-weight: 700;
+  color: var(--VeryDarkGrayishBlue);
+}
+.date {
+  padding-top: 3px;
+  color: var(--GrayishBlue);
+}
+
+.share-wrap {
+  position: relative;
+}
+
+.share-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--LightGrayishBlue);
+  cursor: pointer;
+  position: relative;
+  z-index: 1111;
+}
+
+.share-btn:hover {
+  background-color: hsl(214, 17%, 51%);
+}
+
+.share-btn > img {
+  width: 22px;
+}
+
+.share-btn:hover img {
+  filter: brightness(100);
+}
+
+.share-popup {
+  width: 230px;
+  height: 50px;
+  background-color: var(--VeryDarkGrayishBlue);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.244);
+  position: absolute;
+  left: 20px;
+  bottom: 40px;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease-in-out;
+}
+
+.share-text {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--GrayishBlue);
+  letter-spacing: 4px;
+  font-size: 0.81em;
+}
+
+.share-popup::after {
+  content: "";
+  position: absolute;
+  top: 47px;
+  background-color: var(--VeryDarkGrayishBlue);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  width: 30px;
+  height: 15px;
+}
+
+.active {
+  visibility: hidden;
+  opacity: 0;
+  bottom: 10px;
+}
+
+.share-popup > a > img {
+  width: 20px;
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper {
+    width: 400px;
+    height: 650px;
+    flex-direction: column;
+
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .img-wrap > img {
+    width: 400px;
+    height: 270px;
+    border-radius: 15px 15px 0 0;
+    object-position: top;
+  }
+
+  h1 {
+    padding-right: 0px;
+    font-size: 1.35em;
+  }
+
+  .description {
+    padding-right: 28px;
+  }
+
+  .bottom-section {
+    flex-basis: 82px;
+  }
+
+  .share-popup {
+    width: 400px;
+    height: 75px;
+    justify-content: flex-start;
+    gap: 20px;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.244);
+    position: absolute;
+    left: -126px;
+    bottom: 0px;
+    top: -10px;
+    transform: translate(-50%, 0%);
+    padding-left: 30px;
+  }
+
+  .share-btn {
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
+  }
+
+  .active {
+    visibility: visible;
+    opacity: 1;
+    bottom: 0px;
+    top: 70px;
+  }
+
+  .share-popup::after {
+    visibility: hidden;
+  }
+
+  .share-text {
+    font-size: 0.9em;
+  }
+
+  .share-popup > a > img {
+    width: 25px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  body {
+    padding: 1.5rem;
+  }
+
+  .wrapper {
+    width: 350px;
+  }
+
+  .img-wrap > img {
+    width: 350px;
+    height: 240px;
+  }
+
+  .share-popup {
+    width: 350px;
+    left: -111px;
+  }
+}
